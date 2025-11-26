@@ -12,8 +12,12 @@ All colors MUST be HSL.
     --foreground: 220 26% 14%;
     
     --nss-red: 0 71% 47%;
+    --nss-red-light: 0 71% 57%;
+    --nss-red-dark: 0 71% 37%;
     --nss-slate: 210 29% 18%;
+    --nss-slate-light: 210 29% 28%;
     --nss-amber: 45 100% 51%;
+    --nss-amber-dark: 45 100% 41%;
 
     --card: 0 0% 100%;
     --card-foreground: 220 26% 14%;
@@ -40,7 +44,19 @@ All colors MUST be HSL.
     --input: 214 32% 91%;
     --ring: 0 71% 47%;
 
-    --radius: 1rem;
+    --radius: 1.25rem;
+
+    --gradient-primary: linear-gradient(135deg, hsl(0 71% 47%), hsl(0 71% 57%));
+    --gradient-secondary: linear-gradient(135deg, hsl(210 29% 18%), hsl(210 29% 28%));
+    --gradient-accent: linear-gradient(135deg, hsl(45 100% 51%), hsl(45 100% 61%));
+    --gradient-hero: linear-gradient(135deg, hsl(0 71% 47% / 0.95), hsl(210 29% 18% / 0.95));
+    
+    --shadow-sm: 0 2px 8px hsl(0 0% 0% / 0.04);
+    --shadow-md: 0 4px 16px hsl(0 0% 0% / 0.08);
+    --shadow-lg: 0 8px 32px hsl(0 0% 0% / 0.12);
+    --shadow-xl: 0 16px 48px hsl(0 0% 0% / 0.16);
+    --shadow-primary: 0 8px 32px hsl(0 71% 47% / 0.25);
+    --shadow-accent: 0 8px 24px hsl(45 100% 51% / 0.3);
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5% 26%;
@@ -98,29 +114,70 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground antialiased;
     font-family: 'Inter', sans-serif;
   }
 
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Poppins', sans-serif;
     font-weight: 700;
+    letter-spacing: -0.025em;
+  }
+
+  h1 {
+    @apply text-5xl md:text-7xl;
+  }
+
+  h2 {
+    @apply text-4xl md:text-5xl;
+  }
+
+  h3 {
+    @apply text-2xl md:text-3xl;
   }
 }
 
 @layer utilities {
   .animate-fade-in-up {
-    animation: fadeInUp 0.6s ease-out forwards;
+    animation: fadeInUp 0.8s ease-out forwards;
   }
 
   .animate-counter {
     animation: counter 2s ease-out forwards;
   }
 
+  .animate-slide-in {
+    animation: slideIn 0.6s ease-out forwards;
+  }
+
+  .gradient-primary {
+    background: var(--gradient-primary);
+  }
+
+  .gradient-secondary {
+    background: var(--gradient-secondary);
+  }
+
+  .gradient-accent {
+    background: var(--gradient-accent);
+  }
+
+  .gradient-hero {
+    background: var(--gradient-hero);
+  }
+
+  .shadow-primary {
+    box-shadow: var(--shadow-primary);
+  }
+
+  .shadow-accent {
+    box-shadow: var(--shadow-accent);
+  }
+
   @keyframes fadeInUp {
     from {
       opacity: 0;
-      transform: translateY(20px);
+      transform: translateY(30px);
     }
     to {
       opacity: 1;
@@ -136,6 +193,17 @@ All colors MUST be HSL.
     to {
       opacity: 1;
       transform: scale(1);
+    }
+  }
+
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateX(-30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
     }
   }
 }

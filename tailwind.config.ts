@@ -21,8 +21,12 @@ export default {
         foreground: "hsl(var(--foreground))",
         nss: {
           red: "hsl(var(--nss-red))",
+          "red-light": "hsl(var(--nss-red-light))",
+          "red-dark": "hsl(var(--nss-red-dark))",
           slate: "hsl(var(--nss-slate))",
+          "slate-light": "hsl(var(--nss-slate-light))",
           amber: "hsl(var(--nss-amber))",
+          "amber-dark": "hsl(var(--nss-amber-dark))",
         },
         primary: {
           DEFAULT: "hsl(var(--primary))",

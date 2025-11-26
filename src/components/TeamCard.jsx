@@ -17,23 +17,26 @@ const TeamCard = ({ member }) => {
   const linkedIn = socialLinks.find((s) => s.platform === 'linkedin');
 
   return (
-    <Card className="overflow-hidden hover:shadow-lg transition-shadow">
-      <CardContent className="p-6 text-center">
-        <Avatar className="h-24 w-24 mx-auto mb-4">
-          <AvatarImage src={member.avatar} alt={member.name} />
-          <AvatarFallback className="bg-primary text-primary-foreground text-xl">
-            {getInitials(member.name)}
-          </AvatarFallback>
-        </Avatar>
-        <h3 className="font-heading text-lg font-semibold mb-1">{member.name}</h3>
-        <p className="text-sm text-muted-foreground mb-4">{member.role}</p>
-        <div className="flex justify-center gap-2">
+    <Card className="overflow-hidden hover:shadow-xl transition-all duration-300 group border-0 shadow-md hover:-translate-y-2 bg-card">
+      <CardContent className="p-8 text-center">
+        <div className="relative inline-block mb-6">
+          <div className="absolute inset-0 bg-primary/20 rounded-full blur-xl group-hover:blur-2xl transition-all duration-300"></div>
+          <Avatar className="h-28 w-28 mx-auto border-4 border-primary/10 shadow-lg relative">
+            <AvatarImage src={member.avatar} alt={member.name} className="object-cover" />
+            <AvatarFallback className="bg-gradient-primary text-primary-foreground text-2xl font-bold">
+              {getInitials(member.name)}
+            </AvatarFallback>
+          </Avatar>
+        </div>
+        <h3 className="font-heading text-xl font-bold mb-2 group-hover:text-primary transition-colors">{member.name}</h3>
+        <p className="text-sm text-muted-foreground font-medium mb-6 px-2">{member.role}</p>
+        <div className="flex justify-center gap-3">
           {member.email && (
             <Button
               variant="outline"
               size="icon"
               asChild
-              className="h-9 w-9"
+              className="h-10 w-10 rounded-xl hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all"
             >
               <a
                 href={`mailto:${member.email}`}
@@ -48,7 +51,7 @@ const TeamCard = ({ member }) => {
               variant="outline"
               size="icon"
               asChild
-              className="h-9 w-9"
+              className="h-10 w-10 rounded-xl hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all"
             >
               <a
                 href={linkedIn.url}
