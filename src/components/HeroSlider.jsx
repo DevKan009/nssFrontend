@@ -39,17 +39,17 @@ const HeroSlider = () => {
 
   return (
     <div
-      className="relative h-[600px] md:h-[700px] overflow-hidden bg-secondary"
+      className="relative h-[600px] md:h-[700px] lg:h-[800px] overflow-hidden bg-secondary"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
       <AnimatePresence mode="wait">
         <motion.div
           key={current}
-          initial={{ opacity: 0, scale: 1.1 }}
+          initial={{ opacity: 0, scale: 1.05 }}
           animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 0.95 }}
-          transition={{ duration: 0.8 }}
+          exit={{ opacity: 0, scale: 1.05 }}
+          transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
           className="absolute inset-0"
         >
           <div className="relative h-full w-full">
@@ -58,40 +58,56 @@ const HeroSlider = () => {
               alt={slides[current].title}
               className="h-full w-full object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-br from-nss-red/90 via-nss-slate/80 to-nss-slate/90" />
+            <div className="absolute inset-0 bg-gradient-to-br from-nss-red/95 via-nss-purple/90 to-nss-slate/95" />
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_120%,rgba(255,193,7,0.15),transparent_50%)]" />
             
             <div className="absolute inset-0 flex items-center">
-              <div className="container mx-auto px-4 md:px-8">
+              <div className="container mx-auto px-4 md:px-8 lg:px-16">
                 <motion.div
-                  initial={{ opacity: 0, y: 40 }}
+                  initial={{ opacity: 0, y: 60 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.3, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-                  className="max-w-3xl text-white"
+                  transition={{ delay: 0.3, duration: 1, ease: [0.22, 1, 0.36, 1] }}
+                  className="max-w-4xl text-white"
                 >
                   <motion.div
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.4, duration: 0.6 }}
-                    className="inline-block mb-6 px-4 py-2 bg-accent/20 backdrop-blur-sm border border-accent/30 rounded-full"
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: 0.5, duration: 0.6, type: "spring", bounce: 0.4 }}
+                    className="inline-block mb-8 px-6 py-3 glass-effect rounded-full"
                   >
-                    <span className="text-accent font-semibold text-sm uppercase tracking-wider">
-                      NSS IET DAVV
+                    <span className="text-accent font-bold text-base uppercase tracking-widest">
+                      ✨ NSS IET DAVV
                     </span>
                   </motion.div>
-                  <h1 className="font-heading text-5xl md:text-7xl font-bold mb-6 leading-tight">
+                  <motion.h1 
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.6, duration: 0.8 }}
+                    className="font-heading text-5xl md:text-7xl lg:text-8xl font-extrabold mb-6 leading-[0.95] drop-shadow-2xl"
+                  >
                     {slides[current].title}
-                  </h1>
-                  <p className="text-xl md:text-2xl mb-10 text-white/90 font-light leading-relaxed">
+                  </motion.h1>
+                  <motion.p 
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.7, duration: 0.8 }}
+                    className="text-xl md:text-3xl mb-12 text-white/95 font-medium leading-relaxed drop-shadow-lg"
+                  >
                     {slides[current].subtitle}
-                  </p>
-                  <div className="flex flex-wrap gap-4">
-                    <Button size="lg" variant="accent" className="text-base">
+                  </motion.p>
+                  <motion.div 
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.8, duration: 0.8 }}
+                    className="flex flex-wrap gap-5"
+                  >
+                    <Button size="lg" variant="accent" className="text-base shadow-2xl">
                       Get Involved
                     </Button>
-                    <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-nss-slate text-base">
+                    <Button size="lg" variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-nss-slate text-base backdrop-blur-sm bg-white/10">
                       Learn More
                     </Button>
-                  </div>
+                  </motion.div>
                 </motion.div>
               </div>
             </div>
@@ -103,30 +119,30 @@ const HeroSlider = () => {
       <Button
         variant="ghost"
         size="icon"
-        className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 text-white hover:bg-white/20 backdrop-blur-sm border border-white/20 hover:border-white/40 transition-all"
+        className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 text-white hover:bg-white/30 glass-effect hover:scale-110 transition-all h-14 w-14 rounded-full"
         onClick={prev}
         aria-label="Previous slide"
       >
-        <ChevronLeft className="h-7 w-7" />
+        <ChevronLeft className="h-8 w-8" />
       </Button>
       <Button
         variant="ghost"
         size="icon"
-        className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 text-white hover:bg-white/20 backdrop-blur-sm border border-white/20 hover:border-white/40 transition-all"
+        className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 text-white hover:bg-white/30 glass-effect hover:scale-110 transition-all h-14 w-14 rounded-full"
         onClick={next}
         aria-label="Next slide"
       >
-        <ChevronRight className="h-7 w-7" />
+        <ChevronRight className="h-8 w-8" />
       </Button>
 
       {/* Indicators */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex space-x-3">
+      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex space-x-3 glass-effect px-4 py-3 rounded-full">
         {slides.map((_, index) => (
           <button
             key={index}
             onClick={() => setCurrent(index)}
-            className={`h-1.5 rounded-full transition-all duration-300 ${
-              index === current ? 'w-12 bg-accent shadow-accent' : 'w-1.5 bg-white/40 hover:bg-white/60'
+            className={`h-2 rounded-full transition-all duration-500 ${
+              index === current ? 'w-16 bg-accent shadow-glow' : 'w-2 bg-white/50 hover:bg-white/80'
             }`}
             aria-label={`Go to slide ${index + 1}`}
           />
