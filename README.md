@@ -1,73 +1,128 @@
-# Welcome to your Lovable project
 
-## Project info
+# NSS IET DAVV - Official Website
 
-**URL**: https://lovable.dev/projects/b26a7387-b3c9-44de-a9f8-233acb71a645
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
+![Vite](https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white)
+![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
+![Sanity](https://img.shields.io/badge/sanity-%23F03E2F.svg?style=for-the-badge&logo=sanity&logoColor=white)
 
-## How can I edit this code?
+Deployed at - https://nssiet.vercel.app
 
-There are several ways of editing your application.
+The official digital platform for the **National Service Scheme (NSS)** unit of **IET DAVV, Indore**. This application modernizes the unit's operations by replacing legacy PHP systems with a high-performance Jamstack architecture, facilitating dynamic content management for events, volunteers, and galleries.
 
-**Use Lovable**
+## 🏗️ System Architecture
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/b26a7387-b3c9-44de-a9f8-233acb71a645) and start prompting.
+| Component | Technology | Description |
+| :--- | :--- | :--- |
+| **Frontend Framework** | **React 18** | UI component library using a virtual DOM for efficient updates. |
+| **Language** | **TypeScript** | Statically typed superset of JavaScript for type safety and maintainability. |
+| **Build System** | **Vite** | Next-generation frontend tooling offering fast HMR (Hot Module Replacement) and optimized production builds. |
+| **Styling Engine** | **Tailwind CSS** | Utility-first CSS framework combined with **Shadcn/UI** (Radix Primitives) for accessible, consistent design. |
+| **State Management** | **TanStack Query** | Handles server state, caching, and data synchronization with the CMS, eliminating complex `useEffect` chains. |
+| **Routing** | **React Router v6** | Client-side routing for seamless navigation between pages (Home, Events, Team, etc.). |
+| **Content Backend** | **Sanity.io** | Headless CMS delivering content via APIs. Stores schemas for `events`, `teamMembers`, `galleryImages`, and `siteSettings`. |
+| **Form Handling** | **React Hook Form** | Performant form validation integrated with **Zod** schema validation. |
+| **Animations** | **Framer Motion** | Library for declarative, production-ready animations. |
 
-Changes made via Lovable will be committed automatically to this repo.
+## 🚀 Key Features
 
-**Use your preferred IDE**
+* **Dynamic Event Management:** Fetches upcoming and past events directly from Sanity CMS using GROQ queries.
+* **Interactive Gallery:** A media showcase that links images to specific events and photographers.
+* **Modern "Glassmorphism" UI:** Features a dark-themed, translucent aesthetic (`glass-card`) custom-built with Tailwind utilities.
+* **Real-time Team Grid:** Displays current volunteers and team hierarchy, sortable by role and name.
+* **Optimized Performance:** Uses `vite-plugin-react-swc` for ultra-fast compilation and optimized asset loading.
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+## 🛠️ Installation & Setup
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+### Prerequisites
+* **Node.js** (v18+ recommended)
+* **npm** or **bun**
 
-Follow these steps:
+### 1. Clone the Repository
+```bash
+git clone [https://github.com/DevKan009/nssFrontend.git](https://github.com/DevKan009/nssFrontend.git)
+cd nssFrontend
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
 ```
 
-**Edit a file directly in GitHub**
+### 2. Install Dependencies
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+```bash
+# Using npm
+npm install
 
-**Use GitHub Codespaces**
+# OR Using Bun (Recommended based on lockfile)
+bun install
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+```
 
-## What technologies are used for this project?
+### 3. Environment Configuration
 
-This project is built with:
+Create a `.env` file in the root directory to configure the CMS connection.
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+```env
+VITE_SANITY_PROJECT_ID=your_project_id_here
+# Note: The code defaults to 'dohsuupt' if this variable is missing.
 
-## How can I deploy this project?
+```
 
-Simply open [Lovable](https://lovable.dev/projects/b26a7387-b3c9-44de-a9f8-233acb71a645) and click on Share -> Publish.
+### 4. Start Development Server
 
-## Can I connect a custom domain to my Lovable project?
+```bash
+npm run dev
 
-Yes, you can!
+```
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+The app will be available at `http://localhost:5173` (or the port specified by Vite).
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+## 📂 Project Structure
+
+```text
+src/
+├── components/         # React Components
+│   ├── ui/             # Reusable Shadcn/Radix UI primitives (Button, Card, Toast)
+│   ├── Navbar.tsx      # Responsive Navigation Logic
+│   ├── Hero.tsx        # Homepage Landing Section
+│   └── Footer.tsx      # Site Footer
+├── lib/                # Core Utilities
+│   ├── sanityClient.js # Sanity CMS Configuration
+│   ├── queries.js      # GROQ Data Fetching Queries
+│   └── utils.ts        # Tailwind class merger (cn) & helper functions
+├── pages/              # Route Views
+│   ├── Index.tsx       # Homepage (Landing)
+│   ├── Events.tsx      # Event Listings
+│   ├── EventDetail.tsx # Dynamic Event Single Page
+│   ├── Team.tsx        # Volunteer Directory
+│   └── Gallery.tsx     # Photo Gallery
+├── hooks/              # Custom React Hooks
+│   ├── use-mobile.tsx  # Responsive detection logic
+│   └── use-toast.ts    # Toast notification logic
+└── App.tsx             # Main Layout & Route Definitions
+
+```
+
+## 📜 Available Scripts
+
+* `npm run dev`: Starts the development server.
+* `npm run build`: Type-checks and builds the app for production.
+* `npm run preview`: Previews the built production app locally.
+* `npm run lint`: Runs ESLint to identify code quality issues.
+
+## 🤝 Contributing
+
+1. Fork the repository.
+2. Create a feature branch (`git checkout -b feature/NewFeature`).
+3. Commit your changes (`git commit -m 'Add NewFeature'`).
+4. Push to the branch (`git push origin feature/NewFeature`).
+5. Open a Pull Request.
+
+## 👤 Author
+
+**Kanha Agrawal (DevKan009)**
+
+* GitHub: [@DevKan009](https://www.google.com/search?q=https://github.com/DevKan009)
+
+## 📄 License
+
+This project is licensed under the MIT License.
