@@ -1,183 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222 47% 11%;
-
-    /* Youthful & Vibrant Palette */
-    --card: 0 0% 100%;
-    --card-foreground: 222 47% 11%;
-
-    --popover: 0 0% 100%;
-    --popover-foreground: 222 47% 11%;
-
-    --primary: 245 80% 60%; /* Electric Violet/Blue */
-    --primary-foreground: 210 40% 98%;
-
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222 47% 11%;
-
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-
-    --accent: 25 95% 55%; /* Vibrant Orange */
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 245 80% 60%;
-
-    --radius: 1.5rem; /* Rounder corners for youthful feel */
-
-    /* Custom Brand Colors - Refreshed */
-    --nss-red: 340 85% 55%; /* Modern Pinkish-Red */
-    --nss-red-light: 340 90% 70%;
-    --nss-red-dark: 340 85% 45%;
-    
-    --nss-slate: 230 25% 20%;
-    --nss-slate-light: 230 25% 30%;
-    
-    --nss-amber: 45 100% 50%; /* Golden Yellow */
-    --nss-amber-dark: 45 100% 40%;
-    
-    --nss-purple: 270 70% 60%;
-    --nss-blue: 200 95% 50%; /* Cyan-Blue */
-
-    /* Modern Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(245 80% 60%), hsl(270 70% 60%));
-    --gradient-secondary: linear-gradient(135deg, hsl(230 25% 20%), hsl(230 25% 30%));
-    --gradient-accent: linear-gradient(135deg, hsl(25 95% 55%), hsl(45 100% 50%));
-    --gradient-hero: linear-gradient(120deg, hsl(245 80% 60%), hsl(340 85% 55%), hsl(25 95% 55%));
-    --gradient-mesh: radial-gradient(at 0% 0%, hsl(245 80% 60% / 0.1) 0px, transparent 50%),
-                     radial-gradient(at 100% 0%, hsl(340 85% 55% / 0.1) 0px, transparent 50%),
-                     radial-gradient(at 100% 100%, hsl(25 95% 55% / 0.1) 0px, transparent 50%),
-                     radial-gradient(at 0% 100%, hsl(200 95% 50% / 0.1) 0px, transparent 50%);
-    
-    /* Softer, Colorful Shadows */
-    --shadow-sm: 0 2px 10px hsl(245 80% 60% / 0.05);
-    --shadow-md: 0 4px 20px hsl(245 80% 60% / 0.08);
-    --shadow-lg: 0 10px 40px hsl(245 80% 60% / 0.1);
-    --shadow-xl: 0 20px 60px hsl(245 80% 60% / 0.15);
-    --shadow-primary: 0 10px 30px hsl(245 80% 60% / 0.25);
-    --shadow-accent: 0 10px 30px hsl(25 95% 55% / 0.3);
-    --shadow-glow: 0 0 20px hsl(245 80% 60% / 0.5);
-
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5% 26%;
-    --sidebar-primary: 245 80% 60%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 5% 96%;
-    --sidebar-accent-foreground: 240 6% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217 91% 60%;
-  }
-
-  .dark {
     --background: 222 47% 11%;
     --foreground: 210 40% 98%;
 
-    --card: 222 47% 13%;
+    --card: 217 32% 17%;
     --card-foreground: 210 40% 98%;
 
     --popover: 222 47% 13%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 245 80% 65%;
+    --primary: 217 91% 60%; /* NSS Blue */
     --primary-foreground: 222 47% 11%;
 
-    --secondary: 217 32% 17%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 45 93% 47%; /* NSS Gold */
+    --secondary-foreground: 222 47% 11%;
 
     --muted: 217 32% 17%;
     --muted-foreground: 215 20% 65%;
 
-    --accent: 25 95% 55%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222 47% 11%;
 
     --destructive: 0 62% 30%;
     --destructive-foreground: 210 40% 98%;
 
     --border: 217 32% 17%;
     --input: 217 32% 17%;
-    --ring: 245 80% 65%;
-  }
-}
+    --ring: 224 76% 48%;
 
-@layer base {
+    --radius: 0.75rem;
+
+    /* NSS Specific Colors */
+    --nss-navy: 222 47% 11%;
+    --nss-navy-light: 217 32% 17%;
+    --nss-blue: 217 91% 60%;
+    --nss-gold: 45 93% 47%;
+    --nss-white: 0 0% 100%;
+  }
+
   * {
     @apply border-border;
   }
 
   body {
-    @apply bg-background text-foreground antialiased selection:bg-primary/30;
+    @apply bg-background text-foreground antialiased selection:bg-nss-blue/30 selection:text-nss-white;
     font-family: 'Inter', sans-serif;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 700;
-    letter-spacing: -0.02em;
-  }
-
-  h1 {
-    @apply text-5xl md:text-7xl lg:text-8xl;
-  }
-
-  h2 {
-    @apply text-4xl md:text-5xl;
+    @apply font-heading;
   }
 }
 
 @layer utilities {
-  .glass-effect {
-    @apply backdrop-blur-xl bg-white/70 border border-white/40 dark:bg-black/40 dark:border-white/10;
-  }
-
   .glass-card {
-    @apply backdrop-blur-md bg-white/60 border border-white/50 shadow-lg hover:shadow-xl transition-all duration-300;
+    @apply backdrop-blur-xl bg-white/5 border border-white/10 shadow-lg hover:bg-white/10 transition-all duration-300;
+  }
+  
+  .glass-nav {
+    @apply backdrop-blur-md bg-nss-navy/80 border-b border-white/10 sticky top-0 z-50;
   }
 
-  .animate-float {
-    animation: float 6s ease-in-out infinite;
-  }
-
-  .animate-glow {
-    animation: glow 3s ease-in-out infinite alternate;
+  .text-glow {
+    text-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
   }
 
   .gradient-text {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-nss-purple to-accent;
-  }
-
-  .gradient-primary {
-    background: var(--gradient-primary);
-  }
-
-  .gradient-accent {
-    background: var(--gradient-accent);
-  }
-
-  .gradient-hero {
-    background: var(--gradient-hero);
-  }
-
-  .gradient-mesh {
-    background: var(--gradient-mesh);
-  }
-
-  @keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-15px); }
-  }
-
-  @keyframes glow {
-    from { box-shadow: 0 0 10px hsl(245 80% 60% / 0.2); }
-    to { box-shadow: 0 0 25px hsl(245 80% 60% / 0.5), 0 0 50px hsl(270 70% 60% / 0.3); }
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-nss-blue to-nss-gold;
   }
 }
